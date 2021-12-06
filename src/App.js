@@ -4,9 +4,13 @@ function App() {
   const [timer, setTimer] = React.useState(1);
 
   React.useEffect(() => {
-    setInterval(() => {
+    const intervalID = setInterval(() => {
       setTimer((timer) => timer + 1);
     }, 1000);
+
+    return () => {
+      clearInterval(intervalID);
+    };
   }, []);
 
   return (
